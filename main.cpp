@@ -8,14 +8,23 @@
 
 #include <iostream>
 using namespace std;
-int board[8][8] = {0};
+int board[8][8] = {0}, c = 0, r = 0, queenCounter = 0;
 
 void viewBoard() {
-    for (int c = 0; c < 8; c++) {
-        for (int r = 0; r < 8; r++) {
-            cout << board[c][r] << " ";
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            cout << board[i][j] << " ";
         }
         cout << endl;
+    }
+    cout << endl;
+}
+
+void checkRow(int row) {
+    for(int i = 0; i <= 10; i++) {
+        if (board[row][i]) {
+            cout << "Found a queen at row " << r << " and column " << i + 1 << endl;
+        }
     }
 }
 
@@ -23,14 +32,18 @@ void checkColumn() {
 
 }
 
-void checkRow() {
-
-}
-
 void eightQueens() {
-    
+    while (queenCounter != 8) {
+        if (! board[r][c] ) {
+            board[r][c] = 1;
+            queenCounter++;
+        }
+    }
 }
 
 int main(int argc, const char * argv[]) {
+    viewBoard();
+    board[0][4] = 1;
+    checkRow(0);
     viewBoard();
 }
