@@ -7,9 +7,30 @@
 //
 
 #include <iostream>
+using namespace std;
+int board[8][8] = {0};
+
+void viewBoard() {
+    for (int c = 0; c < 8; c++) {
+        for (int r = 0; r < 8; r++) {
+            cout << board[c][r] << " ";
+        }
+        cout << endl;
+    }
+}
+
+void checkColumn() {
+
+}
+
+void checkRow() {
+
+}
+
+void eightQueens() {
+    
+}
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
+    viewBoard();
 }
