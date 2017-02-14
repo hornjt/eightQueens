@@ -22,14 +22,18 @@ void viewBoard() {
 
 void checkRow(int row) {
     for(int i = 0; i <= 10; i++) {
-        if (board[row][i]) {
-            cout << "Found a queen at row " << r << " and column " << i + 1 << endl;
+        if (board[row - 1][i]) {
+            cout << "Found a queen at row " << row << " and column " << i + 1 << endl;
         }
     }
 }
 
-void checkColumn() {
-
+void checkColumn(int column) {
+    for(int i = 0; i <= 10; i++) {
+        if (board[i][column - 1]) {
+            cout << "Found a queen at row " << i + 1 << " and column " << column << endl;
+        }
+    }
 }
 
 void eightQueens() {
@@ -42,8 +46,9 @@ void eightQueens() {
 }
 
 int main(int argc, const char * argv[]) {
-    viewBoard();
-    board[0][4] = 1;
-    checkRow(0);
+//    viewBoard();
+    board[3][4] = 1;
+//    checkColumn(5);
+    checkRow(4);
     viewBoard();
 }
