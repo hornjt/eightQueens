@@ -20,26 +20,31 @@ void viewBoard() {
     cout << endl;
 }
 
-void checkRow(int row) {
+bool checkRow(int rowToCheck) {
     for(int i = 0; i <= 10; i++) {
-        if (board[row - 1][i]) {
-            cout << "Found a queen at row " << row << " and column " << i + 1 << endl;
+        if (board[rowToCheck - 1][i] != 0) {
+            cout << "Found a queen at row " << rowToCheck << " and column " << i + 1 << endl;
+            return false;
         }
     }
+    return true;
 }
 
-void checkColumn(int column) {
+bool checkColumn(int columnToCheck) {
     for(int i = 0; i <= 10; i++) {
-        if (board[i][column - 1]) {
-            cout << "Found a queen at row " << i + 1 << " and column " << column << endl;
+        if (board[i][columnToCheck - 1] != 0) {
+            cout << "Found a queen at row " << i + 1 << " and column " << columnToCheck << endl;
+            return false;
         }
     }
+    return true;
 }
 
 void eightQueens() {
-    while (queenCounter != 8) {
-        if (! board[r][c] ) {
-            board[r][c] = 1;
+    while (r != 8 || c != 8) {
+        if (board[r][c] == 0 && checkColumn(c + 1) && checkRow(r + 1) ) {
+            board[r++][c++] = 1;
+//            viewBoard();
             queenCounter++;
         }
     }
@@ -47,8 +52,10 @@ void eightQueens() {
 
 int main(int argc, const char * argv[]) {
 //    viewBoard();
-    board[3][4] = 1;
+//    board[0][0] = 1;
 //    checkColumn(5);
-    checkRow(4);
+//    checkRow(4);
+    viewBoard();
+    eightQueens();
     viewBoard();
 }
